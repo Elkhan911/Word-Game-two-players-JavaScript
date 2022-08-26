@@ -8,6 +8,9 @@ const hideBtn = document.querySelector("#_hideBtn");
 const answersZone = document.querySelector("#_answersZone");
 const showConditionsBtn = document.querySelector("#_showConditionsBtn");
 const gameRules = document.querySelector("#_gameRules");
+const inputForletter = document.querySelector("#_inputForletter");
+const choosenLetter = document.querySelector("#_choosenLetter");
+const letterChooseZone = document.querySelector("#_letterChooseZone");
 
 // массив для ответов юзера 1
 let arrAnswers1P = [];
@@ -144,3 +147,22 @@ showConditionsBtn.addEventListener("click", function () {
     showConditions = false;
   }
 });
+
+inputForletter.addEventListener("keydown", function (event) {
+  if (event.key == "Enter") {
+    if (checkLengthForInputLetter(inputForletter.value)) {
+      choosenLetter.textContent = inputForletter.value;
+      inputForletter.value = "";
+    }
+  }
+});
+
+function checkLengthForInputLetter(letter) {
+  letterSplit = letter.split("");
+  console.log(letterSplit);
+  if (letterSplit.length > 1) {
+    alert("Нужно ввести одну букву");
+    console.log(letterSplit);
+    return false;
+  } else return true;
+}
