@@ -13,7 +13,7 @@
 
       <div class="game">
         <p class="game__hints">
-          Отвечает игрок: <span class="game__hints">1</span>
+          Отвечает игрок: <span class="game__hints" id="_gameHint">1</span>
         </p>
 
         <p class="game__timer-text">
@@ -21,21 +21,17 @@
         </p>
         <input class="game__input" type="text" id="_input" />
 
-        <button class="game__button">начать заново</button>
-
+        <div>
+          <button class="game__button">начать заново</button>
+          <button class="game__button">скрыть ответы</button>
+        </div>
         <div class="game__answers-zone">
           <div class="game__answers" id="_user1Answer">
-            <p class="game__answer">
-              Ответы игрока 1
-              <span class="game_answer"></span>
-            </p>
+            <p class="game__answer"><b> Ответы игрока 1</b></p>
           </div>
 
           <div class="game__answers" id="_user2Answer">
-            <p class="game__answer">
-              Ответы игрока 2
-              <span class="game_answer"></span>
-            </p>
+            <p class="game__answer"><b> Ответы игрока 2</b></p>
           </div>
         </div>
       </div>

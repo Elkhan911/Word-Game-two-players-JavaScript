@@ -1,6 +1,7 @@
 const input = document.querySelector("#_input");
 const user1Answer = document.querySelector("#_user1Answer");
 const user2Answer = document.querySelector("#_user2Answer");
+const gameHint = document.querySelector("#_gameHint");
 
 let arrAnswers1P = [];
 let arrAnswers2P = [];
@@ -11,6 +12,7 @@ input.addEventListener("keydown", function (event) {
     if (firstPlayer) {
       let newAnswer = document.createElement("p");
       newAnswer.textContent = input.value;
+      newAnswer.classList.add("game__answer");
       user1Answer.append(newAnswer);
 
       input.value = "";
@@ -18,9 +20,11 @@ input.addEventListener("keydown", function (event) {
       console.log(arrAnswers1P);
 
       firstPlayer = false;
+      gameHint.textContent = 2;
     } else {
       let newAnswer = document.createElement("p");
       newAnswer.textContent = input.value;
+      newAnswer.classList.add("game__answer");
       user2Answer.append(newAnswer);
 
       input.value = "";
@@ -28,6 +32,7 @@ input.addEventListener("keydown", function (event) {
       console.log(arrAnswers2P);
 
       firstPlayer = true;
+      gameHint.textContent = 1;
     }
   }
 });

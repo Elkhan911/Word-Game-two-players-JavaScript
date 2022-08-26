@@ -7,7 +7,7 @@
 }
 
 .task__heading {
-  font-size: 25px;
+  font-size: 40px;
 }
 
 .game__input {
@@ -19,15 +19,17 @@
 }
 
 .game__answer {
-  border: 1px solid black;
+  font-size: 20px;
 }
 
 .game__hints {
-  /* border: 1px solid black; */
+  font-weight: 600;
+  font-size: 26px;
 }
 
 .game__timer-text {
-  /* border: 1px solid black; */
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .game__answers-zone {
@@ -37,9 +39,9 @@
 }
 
 .game__button {
-  display: block;
-  margin: auto;
+  margin: 0 10px 10px 0;
   width: 150px;
   height: 50px;
   border-radius: 10%;
+  font-size: 15px;
 }
