@@ -30,7 +30,7 @@
   /* border: 1px solid black; */
 }
 
-.game__answers {
+.game__answers-zone {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
