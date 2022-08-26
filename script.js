@@ -150,19 +150,19 @@ showConditionsBtn.addEventListener("click", function () {
 
 inputForletter.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
-    if (checkLengthForInputLetter(inputForletter.value)) {
+    if (checkLength(inputForletter.value)) {
       choosenLetter.textContent = inputForletter.value;
       inputForletter.value = "";
     }
   }
 });
 
-function checkLengthForInputLetter(letter) {
-  letterSplit = letter.split("");
-  console.log(letterSplit);
-  if (letterSplit.length > 1) {
-    alert("Нужно ввести одну букву");
-    console.log(letterSplit);
+function checkLength(inputValue) {
+  inputValueSplit = inputValue.split("");
+  if (inputValueSplit.length > 1) {
+    inputValue.value = "";
+    alert("Нужно ввести одну букву для игры");
+
     return false;
   } else return true;
 }
