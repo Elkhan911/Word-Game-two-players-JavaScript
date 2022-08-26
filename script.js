@@ -68,34 +68,34 @@ inputForletter.addEventListener("keydown", function (event) {
 input.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
     // проверяем не было ли уже использовано слово
-    if (!checkRepeat(input.value)) {
-      if (firstPlayer) {
-        let newAnswer = document.createElement("p");
-        newAnswer.textContent = input.value;
-        newAnswer.classList.add("game__answerFirst");
-        user1Answer.append(newAnswer);
+    if (checkFirstLetter(input.value, choosenLetter.textContent)) {
+      if (!checkRepeat(input.value)) {
+        if (firstPlayer) {
+          let newAnswer = document.createElement("p");
+          newAnswer.textContent = input.value;
+          newAnswer.classList.add("game__answerFirst");
+          user1Answer.append(newAnswer);
 
-        input.value = "";
-        arrAnswers1P.push(newAnswer.textContent);
-        console.log(arrAnswers1P);
+          input.value = "";
+          arrAnswers1P.push(newAnswer.textContent);
+          console.log(arrAnswers1P);
 
-        firstPlayer = false;
-        gameHint.textContent = 2;
-      } else {
-        let newAnswer = document.createElement("p");
-        newAnswer.textContent = input.value;
-        newAnswer.classList.add("game__answerSecond");
-        user2Answer.append(newAnswer);
+          firstPlayer = false;
+          gameHint.textContent = 2;
+        } else {
+          let newAnswer = document.createElement("p");
+          newAnswer.textContent = input.value;
+          newAnswer.classList.add("game__answerSecond");
+          user2Answer.append(newAnswer);
 
-        input.value = "";
-        arrAnswers2P.push(newAnswer.textContent);
-        console.log(arrAnswers2P);
+          input.value = "";
+          arrAnswers2P.push(newAnswer.textContent);
+          console.log(arrAnswers2P);
 
-        firstPlayer = true;
-        gameHint.textContent = 1;
+          firstPlayer = true;
+          gameHint.textContent = 1;
+        }
       }
-    } else {
-      return;
     }
   }
 });
@@ -159,7 +159,11 @@ hideBtn.addEventListener("click", function () {
 });
 
 function checkFirstLetter(str, firstLetter) {
-  return str[0] == firstLetter;
+  if (str[0].toLowerCase() == firstLetter.toLowerCase()) {
+    return true;
+  } else {
+    alert("Вы вводите слово не на ту букву");
+  }
 }
 
 showConditionsBtn.addEventListener("click", function () {
