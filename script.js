@@ -7,16 +7,28 @@ const resetBtn = document.querySelector("#_resetBtn");
 const hideBtn = document.querySelector("#_hideBtn");
 const answersZone = document.querySelector("#_answersZone");
 
+// массив для ответов юзера 1
 let arrAnswers1P = [];
+
+// массив для ответов юзера 2
 let arrAnswers2P = [];
+
+// переменная для определения списка ответов юзеров
 let firstPlayer = true;
+
+// переменная айди таймера для аннулирования таймера
 let timerId;
+
+// счетчик для таймера
 let timerCounter = 6;
-let show = true;
+
+// переменнная для кнопки скрыть ответы
+let showAnswers = true;
 
 input.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
-    if (!checkAnswer(input.value)) {
+    // проверяем не было ли уже использовано слово
+    if (!checkRepeat(input.value)) {
       if (firstPlayer) {
         let newAnswer = document.createElement("p");
         newAnswer.textContent = input.value;
@@ -50,6 +62,7 @@ input.addEventListener("keydown", function (event) {
 
 timer.addEventListener("click", startTimer);
 
+// функция для запуска таймера
 function startTimer() {
   timerId = setInterval(function () {
     timerCounter--;
@@ -59,21 +72,26 @@ function startTimer() {
       clearInterval(timerId);
     }
   }, 1000);
+
+  // удаляем listener чтоб таймер не запускался несколько раз
   timer.removeEventListener("click", startTimer);
 }
 
-function checkAnswer(word) {
+// функция для проверки повторного использования слова
+function checkRepeat(word) {
   if (arrAnswers1P.includes(word) || arrAnswers2P.includes(word)) {
     alert("Это слово уже было");
     return true;
   }
 }
 
+// функция для сброса всех данных, чтоб начать игру заново
 resetBtn.addEventListener("click", function () {
   arrAnswers1P = [];
   arrAnswers2P = [];
   clearInterval(timerId);
   timer.innerHTML = " <u>кликните</u > для запуска таймера";
+  timer.addEventListener("click", startTimer);
 
   // удаляем каждый созданный список с ответом юзера 1
   let gameAnswerAll1 = document.querySelectorAll(".game__answerFirst");
@@ -85,12 +103,23 @@ resetBtn.addEventListener("click", function () {
   let gameAnswerAll2 = document.querySelectorAll(".game__answerSecond");
   for (let gameAnswer2 of gameAnswerAll2) {
     user2Answer.removeChild(gameAnswer2);
+
+    // вешаем слушатель на запуск таймера
   }
 });
 
+// функция-переключатель для скрыть/показать ответы юзеров
 hideBtn.addEventListener("click", function () {
-  show = false;
-  user1Answer.classList.toggle("game__answers_off");
-  user2Answer.classList.toggle("game__answers_off");
-  hideBtn.textContent = "Показать ответы";
+  if (showAnswers) {
+    showAnswers = false;
+    user1Answer.classList.add("game__answers_off");
+    user2Answer.classList.add("game__answers_off");
+    hideBtn.textContent = "Показать ответы";
+  } else {
+    showAnswers = true;
+    user1Answer.classList.remove("game__answers_off");
+    user2Answer.classList.remove("game__answers_off");
+    hideBtn.textContent = "скрыть ответы";
+  }
+  console.log(showAnswers);
 });
