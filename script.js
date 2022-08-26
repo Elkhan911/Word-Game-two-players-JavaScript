@@ -151,7 +151,7 @@ showConditionsBtn.addEventListener("click", function () {
 inputForletter.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
     if (checkLength(inputForletter.value)) {
-      choosenLetter.textContent = inputForletter.value;
+      choosenLetter.textContent = inputForletter.value.toUpperCase();
       inputForletter.value = "";
     }
   }

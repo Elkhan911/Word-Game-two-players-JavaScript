@@ -12,6 +12,7 @@
 
 .game__rules-zone {
   padding: 20px;
+  border: 1px solid black;
 }
 
 .game__rules {
