@@ -11,6 +11,7 @@ const gameRules = document.querySelector("#_gameRules");
 const inputForletter = document.querySelector("#_inputForletter");
 const choosenLetter = document.querySelector("#_choosenLetter");
 const letterChooseZone = document.querySelector("#_letterChooseZone");
+const chooseUser = document.querySelector("#_chooseUser");
 
 // массив для ответов юзера 1
 let arrAnswers1P = [];
@@ -25,7 +26,7 @@ let firstPlayer = true;
 let timerId;
 
 // счетчик для таймера
-let timerCounter = 6;
+let timerCounter = 121;
 
 // переменнная для кнопки скрыть ответы
 let showAnswers = true;
@@ -40,6 +41,29 @@ function checkRepeat(word) {
     return true;
   }
 }
+
+// функция для проверки длины ввода
+function checkLength(inputValue) {
+  inputValueSplit = inputValue.split("");
+  if (inputValueSplit.length > 1) {
+    inputValue.value = "";
+    alert("Нужно ввести одну букву для игры");
+
+    return false;
+  } else return true;
+}
+
+// слушатель для ввода буквы
+inputForletter.addEventListener("keydown", function (event) {
+  if (event.key == "Enter") {
+    if (checkLength(inputForletter.value)) {
+      choosenLetter.textContent = inputForletter.value.toUpperCase();
+      inputForletter.value = "";
+      letterChooseZone.classList.add("game__letter-choose_off");
+      chooseUser.classList.remove("game__hints_off");
+    }
+  }
+});
 
 input.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
@@ -101,6 +125,10 @@ resetBtn.addEventListener("click", function () {
   timer.innerHTML = " <u>кликните</u > для запуска таймера";
   timer.addEventListener("click", startTimer);
 
+  letterChooseZone.classList.remove("game__letter-choose_off");
+  chooseUser.classList.add("game__hints_off");
+  choosenLetter.textContent = "";
+
   // удаляем каждый созданный список с ответом юзера 1
   let gameAnswerAll1 = document.querySelectorAll(".game__answerFirst");
   for (let gameAnswer1 of gameAnswerAll1) {
@@ -111,8 +139,6 @@ resetBtn.addEventListener("click", function () {
   let gameAnswerAll2 = document.querySelectorAll(".game__answerSecond");
   for (let gameAnswer2 of gameAnswerAll2) {
     user2Answer.removeChild(gameAnswer2);
-
-    // вешаем слушатель на запуск таймера
   }
 });
 
@@ -147,22 +173,3 @@ showConditionsBtn.addEventListener("click", function () {
     showConditions = false;
   }
 });
-
-inputForletter.addEventListener("keydown", function (event) {
-  if (event.key == "Enter") {
-    if (checkLength(inputForletter.value)) {
-      choosenLetter.textContent = inputForletter.value.toUpperCase();
-      inputForletter.value = "";
-    }
-  }
-});
-
-function checkLength(inputValue) {
-  inputValueSplit = inputValue.split("");
-  if (inputValueSplit.length > 1) {
-    inputValue.value = "";
-    alert("Нужно ввести одну букву для игры");
-
-    return false;
-  } else return true;
-}
