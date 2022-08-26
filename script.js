@@ -3,6 +3,9 @@ const user1Answer = document.querySelector("#_user1Answer");
 const user2Answer = document.querySelector("#_user2Answer");
 const gameHint = document.querySelector("#_gameHint");
 const timer = document.querySelector("#_timer");
+const resetBtn = document.querySelector("#_resetBtn");
+const hideBtn = document.querySelector("#_hideBtn");
+const answersZone = document.querySelector("#_answersZone");
 
 let arrAnswers1P = [];
 let arrAnswers2P = [];
@@ -65,4 +68,20 @@ function checkAnswer(word) {
   }
 }
 
-resetBtn.addEventListener("click", function () {});
+resetBtn.addEventListener("click", function () {
+  arrAnswers1P = [];
+  arrAnswers2P = [];
+  clearInterval(timerId);
+  timer.textContent = "кликните для запуска таймера";
+
+  let gameAnswerAll = document.querySelectorAll(".game__answer");
+  for (let gameAnswer of gameAnswerAll) {
+    user1Answer.removeChild(gameAnswer);
+    user2Answer.removeChild(gameAnswer);
+  }
+});
+
+hideBtn.addEventListener("click", function () {
+  user1Answer.classList.add("game__answers_off");
+  user2Answer.classList.add("game__answers_off");
+});

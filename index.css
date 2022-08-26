@@ -21,6 +21,10 @@
   font-size: 20px;
 }
 
+.game__answers {
+  font-size: 20px;
+}
+
 .game__hints {
   font-weight: 600;
   font-size: 26px;
@@ -43,4 +47,8 @@
   height: 50px;
   border-radius: 10%;
   font-size: 15px;
+}
+
+.game__answers_off {
+  display: none;
 }
