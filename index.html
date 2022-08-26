@@ -42,11 +42,17 @@
           <p class="game__text">
             Введите на какую букву будет вестись игра и нажмите Enter
           </p>
-          <input class="game" type="text" name="" id="_inputForletter" />
+          <input
+            class="game__input"
+            type="text"
+            name=""
+            id="_inputForletter"
+            placeholder="Введите букву..."
+          />
         </div>
 
         <p class="game__text">
-          Игру буде вестись на букву:
+          Игру будет вестись на букву:
           <span class="game__text" id="_choosenLetter"></span>
         </p>
 
@@ -60,7 +66,12 @@
             ><u> кликните</u> для запуска таймера</span
           >
         </p>
-        <input class="game__input" type="text" id="_input" />
+        <input
+          class="game__input"
+          type="text"
+          id="_input"
+          placeholder="Введите ваше слово..."
+        />
 
         <div>
           <button class="game__button" id="_resetBtn">начать заново</button>
