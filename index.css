@@ -42,6 +42,10 @@
   font-size: 20px;
 }
 
+.game__text {
+  font-size: 20px;
+}
+
 .game__hints {
   font-weight: 600;
   font-size: 26px;
