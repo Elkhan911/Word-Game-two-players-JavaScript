@@ -9,7 +9,36 @@
   </head>
   <body>
     <section class="task">
-      <h2 class="task__heading">Игра в слова</h2>
+      <h2 class="task__heading">Игра в слова для двоих</h2>
+
+      <div class="game">
+        <p class="game__hints">
+          Отвечает игрок: <span class="game__hints">1</span>
+        </p>
+
+        <p class="game__timer-text">
+          Осталось: <span class="game__timer-text">60</span>
+        </p>
+        <input class="game__input" type="text" id="_input" />
+
+        <button class="game__button">начать заново</button>
+
+        <div class="game__answers">
+          <div>
+            <p class="game__answer">
+              Ответы игрока 1
+              <span class="game_answer" id="_user1Answer"></span>
+            </p>
+          </div>
+
+          <div>
+            <p class="game__answer">
+              Ответы игрока 2
+              <span class="game_answer" id="_user2Answer"></span>
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
     <script src="script.js"></script>
   </body>
