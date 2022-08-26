@@ -6,6 +6,8 @@ const timer = document.querySelector("#_timer");
 const resetBtn = document.querySelector("#_resetBtn");
 const hideBtn = document.querySelector("#_hideBtn");
 const answersZone = document.querySelector("#_answersZone");
+const showConditionsBtn = document.querySelector("#_showConditionsBtn");
+const gameRules = document.querySelector("#_gameRules");
 
 // массив для ответов юзера 1
 let arrAnswers1P = [];
@@ -24,6 +26,17 @@ let timerCounter = 6;
 
 // переменнная для кнопки скрыть ответы
 let showAnswers = true;
+
+let showConditions = false;
+// functions
+
+// функция для проверки повторного использования слова
+function checkRepeat(word) {
+  if (arrAnswers1P.includes(word) || arrAnswers2P.includes(word)) {
+    alert("Это слово уже было");
+    return true;
+  }
+}
 
 input.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
@@ -77,14 +90,6 @@ function startTimer() {
   timer.removeEventListener("click", startTimer);
 }
 
-// функция для проверки повторного использования слова
-function checkRepeat(word) {
-  if (arrAnswers1P.includes(word) || arrAnswers2P.includes(word)) {
-    alert("Это слово уже было");
-    return true;
-  }
-}
-
 // функция для сброса всех данных, чтоб начать игру заново
 resetBtn.addEventListener("click", function () {
   arrAnswers1P = [];
@@ -122,4 +127,20 @@ hideBtn.addEventListener("click", function () {
     hideBtn.textContent = "скрыть ответы";
   }
   console.log(showAnswers);
+});
+
+function checkFirstLetter(str, firstLetter) {
+  return str[0] == firstLetter;
+}
+
+showConditionsBtn.addEventListener("click", function () {
+  if (!showConditions) {
+    gameRules.classList.remove("game__rules-zone_off");
+    this.textContent = "Скрыть условия игры";
+    showConditions = true;
+  } else {
+    gameRules.classList.add("game__rules-zone_off");
+    this.textContent = "Показать условия игры";
+    showConditions = false;
+  }
 });
