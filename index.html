@@ -17,13 +17,16 @@
         </p>
 
         <p class="game__timer-text">
-          Осталось: <span class="game__timer-text">60</span>
+          Осталось:
+          <span class="game__timer-text" id="_timer"
+            ><u> кликните</u> для запуска таймера</span
+          >
         </p>
         <input class="game__input" type="text" id="_input" />
 
         <div>
-          <button class="game__button">начать заново</button>
-          <button class="game__button">скрыть ответы</button>
+          <button class="game__button" id="_resetBtn">начать заново</button>
+          <button class="game__button" id="_hideBtn">скрыть ответы</button>
         </div>
         <div class="game__answers-zone">
           <div class="game__answers" id="_user1Answer">
