@@ -12,6 +12,7 @@ let arrAnswers2P = [];
 let firstPlayer = true;
 let timerId;
 let timerCounter = 6;
+let show = true;
 
 input.addEventListener("keydown", function (event) {
   if (event.key == "Enter") {
@@ -19,7 +20,7 @@ input.addEventListener("keydown", function (event) {
       if (firstPlayer) {
         let newAnswer = document.createElement("p");
         newAnswer.textContent = input.value;
-        newAnswer.classList.add("game__answer");
+        newAnswer.classList.add("game__answerFirst");
         user1Answer.append(newAnswer);
 
         input.value = "";
@@ -31,7 +32,7 @@ input.addEventListener("keydown", function (event) {
       } else {
         let newAnswer = document.createElement("p");
         newAnswer.textContent = input.value;
-        newAnswer.classList.add("game__answer");
+        newAnswer.classList.add("game__answerSecond");
         user2Answer.append(newAnswer);
 
         input.value = "";
@@ -72,16 +73,24 @@ resetBtn.addEventListener("click", function () {
   arrAnswers1P = [];
   arrAnswers2P = [];
   clearInterval(timerId);
-  timer.textContent = "кликните для запуска таймера";
+  timer.innerHTML = " <u>кликните</u > для запуска таймера";
 
-  let gameAnswerAll = document.querySelectorAll(".game__answer");
-  for (let gameAnswer of gameAnswerAll) {
-    user1Answer.removeChild(gameAnswer);
-    user2Answer.removeChild(gameAnswer);
+  // удаляем каждый созданный список с ответом юзера 1
+  let gameAnswerAll1 = document.querySelectorAll(".game__answerFirst");
+  for (let gameAnswer1 of gameAnswerAll1) {
+    user1Answer.removeChild(gameAnswer1);
+  }
+
+  // удаляем каждый созданный список с ответом юзера 2
+  let gameAnswerAll2 = document.querySelectorAll(".game__answerSecond");
+  for (let gameAnswer2 of gameAnswerAll2) {
+    user2Answer.removeChild(gameAnswer2);
   }
 });
 
 hideBtn.addEventListener("click", function () {
-  user1Answer.classList.add("game__answers_off");
-  user2Answer.classList.add("game__answers_off");
+  show = false;
+  user1Answer.classList.toggle("game__answers_off");
+  user2Answer.classList.toggle("game__answers_off");
+  hideBtn.textContent = "Показать ответы";
 });

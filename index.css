@@ -17,7 +17,11 @@
   font-size: 16px;
 }
 
-.game__answer {
+.game__answerFirst {
+  font-size: 20px;
+}
+
+.game__answerSecond {
   font-size: 20px;
 }
 
