@@ -215,5 +215,4 @@ hideBtn.addEventListener("click", function () {
     user2Answer.classList.remove("game__answers_off");
     hideBtn.textContent = "скрыть ответы";
   }
-  console.log(showAnswers);
 });
