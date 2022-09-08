@@ -10,7 +10,6 @@
   <body>
     <section class="content">
       <h2 class="content__header">Игра в слова для двух игроков</h2>
-
       <div class="game">
         <div class="game__box">
           <div class="rules">
@@ -31,7 +30,6 @@
               </p>
             </div>
           </div>
-
           <div class="game__container" id="_gameContainer1">
             <p class="game__text">
               Введите букву, на которой будет вестись игра и нажмите Enter
@@ -44,7 +42,6 @@
               placeholder="Введите букву..."
             />
           </div>
-
           <div
             class="game__container game__container_inactive"
             id="_gameContainer2"
@@ -58,13 +55,15 @@
               Отвечает игрок: <span class="game__hint" id="_gameHint">1</span>
             </p>
 
+            <p class="game__hint game__hint_inactive" id="_winText">
+              Победил игрок <span id="_winUser"></span>. Поздравляем!
+            </p>
             <div class="timer">
               <p class="timer__text">
                 Осталось:
                 <span id="_timer">120 секунд</span>
               </p>
             </div>
-
             <input
               class="game__input"
               type="text"
@@ -72,7 +71,6 @@
               placeholder="Введите ваше слово..."
             />
           </div>
-
           <div
             class="game__container game__container_inactive"
             id="_gameContainer3"
@@ -80,7 +78,6 @@
             <button class="game__button" id="_resetBtn">начать заново</button>
             <button class="game__button" id="_hideBtn">скрыть ответы</button>
           </div>
-
           <div class="answers answers_inactive" id="_gameContainerAnswers">
             <div class="answers__box" id="_user1Answer">
               <b> Ответы игрока 1</b>

@@ -87,6 +87,8 @@
 
 .timer {
   border: 1px solid black;
+  width: 400px;
+  margin: auto;
 }
 
 .timer__text {
@@ -113,11 +115,17 @@
 }
 
 .game__button {
+  background-color: rgb(236, 236, 236);
   margin: 0 10px 10px 0;
   width: 150px;
   height: 50px;
   border-radius: 10px;
   font-size: 15px;
+}
+
+.game__button:hover {
+  background-color: floralwhite;
+  cursor: pointer;
 }
 
 .game__answers_off {

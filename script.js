@@ -1,5 +1,4 @@
 const inputForLetter = document.querySelector("#_inputForLetter");
-
 const input = document.querySelector("#_input");
 const user1Answer = document.querySelector("#_user1Answer");
 const user2Answer = document.querySelector("#_user2Answer");
@@ -15,6 +14,8 @@ const gameContainer2 = document.querySelector("#_gameContainer2");
 const gameContainer3 = document.querySelector("#_gameContainer3");
 const gameContainerAnswers = document.querySelector("#_gameContainerAnswers");
 const chooseUser = document.querySelector("#_chooseUser");
+const winText = document.querySelector("#_winText");
+let winUser = document.querySelector("#_winUser");
 
 // массив для ответов юзера 1
 let arrAnswers1P = [];
@@ -63,6 +64,24 @@ function checkRepeat(word) {
     alert("Это слово уже было");
     return false;
   } else return true;
+}
+
+// функция для определения победителя
+function checkResultGame() {
+  if (timerCounter == 0) {
+    timerCounter = 0;
+    input.setAttribute("disabled", true);
+    resetBtn.style.backgroundColor = "floralwhite";
+
+    chooseUser.classList.add("game__hint_inactive");
+    winText.classList.remove("game__hint_inactive");
+
+    if (firstPlayerTurn == true) {
+      winUser.textContent = 2;
+    } else {
+      winUser.textContent = 1;
+    }
+  }
 }
 
 showConditionsBtn.addEventListener("click", function () {
@@ -126,7 +145,7 @@ input.addEventListener("keydown", function (event) {
           firstPlayerTurn = true;
           gameHint.textContent = 1;
         }
-        timerCounter = 121;
+        timerCounter = 120;
       }
     }
   }
@@ -143,6 +162,7 @@ function startTimer() {
     if (timerCounter == 0) {
       clearInterval(timerId);
     }
+    checkResultGame();
   }, 1000);
 
   // удаляем listener чтоб таймер не запускался несколько раз
@@ -154,12 +174,8 @@ resetBtn.addEventListener("click", function () {
   arrAnswers1P = [];
   arrAnswers2P = [];
   clearInterval(timerId);
-  timer.innerHTML = 120;
+  timerCounter = 120;
   timer.addEventListener("click", startTimer);
-
-  gameContainer1.classList.remove("game__container_inactive");
-  chooseUser.classList.add("game__hints_off");
-  choosenLetter.textContent = "";
 
   // удаляем каждый созданный список с ответами
   let gameAnswerAll = document.querySelectorAll(".answers__text");
@@ -170,6 +186,20 @@ resetBtn.addEventListener("click", function () {
       user2Answer.removeChild(gameAnswer);
     }
   }
+
+  gameContainer1.classList.remove("game__container_inactive");
+  choosenLetter.textContent = "";
+  input.removeAttribute("disabled");
+  resetBtn.style.backgroundColor = "rgb(236, 236, 236)";
+
+  chooseUser.classList.remove("game__hint_inactive");
+  winText.classList.add("game__hint_inactive");
+  winUser = "";
+
+  // возвращаем блоки в первончальное скрытое положение
+  gameContainer2.classList.add("game__container_inactive");
+  gameContainer3.classList.add("game__container_inactive");
+  gameContainerAnswers.classList.add("answers_inactive");
 });
 
 // функция-переключатель для скрыть/показать ответы юзеров
