@@ -1,4 +1,4 @@
-.task {
+.content {
   border: 1px solid black;
   width: 1200px;
   margin: 50px auto 0;
@@ -6,21 +6,58 @@
   padding: 50px;
 }
 
-.task__heading {
+.content__header {
+  border: 1px solid black;
   font-size: 40px;
+  width: 80%;
+  margin: auto;
 }
 
-.game__rules-zone {
+.game__box {
+  width: 80%;
+  margin: auto;
+}
+
+.rules {
   padding: 20px;
   border: 1px solid black;
 }
 
-.game__rules {
-  font-size: 20px;
-  text-align: justify;
+.rules__buton {
+  width: 150px;
+  height: 50px;
+  margin: 0 10px 10px 0;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: ghostwhite;
 }
 
-.game__rules-zone_off {
+.rules__buton:hover {
+  background: floralwhite;
+  cursor: pointer;
+}
+
+.rules__texts {
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.rules__texts_inactive {
+  display: none;
+}
+
+.rules__text {
+  font-size: 20px;
+  text-align: justify;
+  text-align: center;
+}
+
+.game__container {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.game__container_inactive {
   display: none;
 }
 
@@ -31,44 +68,48 @@
   font-size: 16px;
 }
 
-.game__answerFirst {
-  font-size: 20px;
-}
-
-.game__answerSecond {
-  font-size: 20px;
-}
-
 .game__answers {
   font-size: 20px;
-}
-
-.game__letter-choose_off {
-  display: none;
 }
 
 .game__text {
   font-size: 20px;
 }
 
-.game__hints {
+.game__hint {
   font-weight: 600;
   font-size: 26px;
 }
 
-.game__hints_off {
+.game__hint_inactive {
   display: none;
 }
 
-.game__timer-text {
+.timer {
+  border: 1px solid black;
+}
+
+.timer__text {
   font-weight: 600;
   font-size: 20px;
 }
 
-.game__answers-zone {
+.answers {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+}
+
+.answers_inactive {
+  display: none;
+}
+
+.answers__box {
+  font-size: 20px;
+}
+
+.answers__text {
+  font-size: 20px;
 }
 
 .game__button {

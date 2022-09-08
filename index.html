@@ -8,82 +8,86 @@
     <title>Игра в слова на JavaScript</title>
   </head>
   <body>
-    <section class="task">
-      <h2 class="task__heading">Игра в слова для двух игроков</h2>
+    <section class="content">
+      <h2 class="content__header">Игра в слова для двух игроков</h2>
 
       <div class="game">
-        <button class="game__rules-buton game__button" id="_showConditionsBtn">
-          Показать условия игры
-        </button>
-        <div class="game__rules-zone game__rules-zone_off" id="_gameRules">
-          <p class="game__rules">
-            Вы выбираете букву на которую будет вестись игра. К примеру, на
-            букву "В". Первый игрок вводит слово в "ветер". Наступает очередь
-            вводить второго игрока. Второй игрок, к примеру, вводит — "время".
-            Снова очередь первого игрока, он вводит слово "ворота", и так далее.
-          </p>
-          <p class="game__rules">
-            По правилам игры слова не должны быть имена собственных. Например,
-            Венеция или Волга недпоустимые значения. Так же не должно быть
-            однокоренных слов. Не допускать ввод таких слов должны игроки
-          </p>
-          <p class="game__rules">
-            Если вы попытаетесь ввести то слово, которое уже было — игра не
-            примет у вас это слово. Если вы попытаетесь ввести слово не на ту
-            букву, которую играете — игра так же не примет у вас это слово.
-          </p>
-
-          <p class="game__rules">
-            По желанию вы можете играть на время. Таймер стоит на 120 секунд
-          </p>
-        </div>
-
-        <div class="game__letter-choose" id="_letterChooseZone">
-          <p class="game__text">
-            Введите на какую букву будет вестись игра и нажмите Enter
-          </p>
-          <input
-            class="game__input"
-            type="text"
-            name=""
-            id="_inputForletter"
-            placeholder="Введите букву..."
-          />
-        </div>
-
-        <p class="game__text">
-          Игру будет вестись на букву:
-          <span class="game__text" id="_choosenLetter"></span>
-        </p>
-
-        <p class="game__hints game__hints_off" id="_chooseUser">
-          Отвечает игрок: <span class="game__hints" id="_gameHint">1</span>
-        </p>
-
-        <p class="game__timer-text">
-          Осталось:
-          <span class="game__timer-text" id="_timer"
-            ><u> кликните</u> для запуска таймера</span
-          >
-        </p>
-        <input
-          class="game__input"
-          type="text"
-          id="_input"
-          placeholder="Введите ваше слово..."
-        />
-
-        <div>
-          <button class="game__button" id="_resetBtn">начать заново</button>
-          <button class="game__button" id="_hideBtn">скрыть ответы</button>
-        </div>
-        <div class="game__answers-zone" id="_answersZone">
-          <div class="game__answers" id="_user1Answer">
-            <b> Ответы игрока 1</b>
+        <div class="game__box">
+          <div class="rules">
+            <button class="rules__buton" id="_showConditionsBtn">
+              Показать условия игры
+            </button>
+            <div class="rules__texts rules__texts_inactive" id="_gameRules">
+              <p class="rules__text">
+                Игра ведется на одну букву. Каждый игрок по очереди вводит
+                слово.
+              </p>
+              <p class="rules__text">
+                Нельзя ввести слово на другую букву. Нельзя ввести слово,
+                которое уже было.
+              </p>
+              <p class="rules__text">
+                По желанию вы можете играть на время. Таймер стоит на 120 секунд
+              </p>
+            </div>
           </div>
 
-          <div class="game__answers" id="_user2Answer">
-            <b> Ответы игрока 2</b>
+          <div class="game__container" id="_gameContainer1">
+            <p class="game__text">
+              Введите букву, на которой будет вестись игра и нажмите Enter
+            </p>
+            <input
+              class="game__input"
+              type="text"
+              name=""
+              id="_inputForLetter"
+              placeholder="Введите букву..."
+            />
+          </div>
+
+          <div
+            class="game__container game__container_inactive"
+            id="_gameContainer2"
+          >
+            <p class="game__text">
+              Игру будет вестись на букву:
+              <span class="game__text" id="_choosenLetter"></span>
+            </p>
+
+            <p class="game__hint game__hint_inactive" id="_chooseUser">
+              Отвечает игрок: <span class="game__hint" id="_gameHint">1</span>
+            </p>
+
+            <div class="timer">
+              <p class="timer__text">
+                Осталось:
+                <span id="_timer">120 секунд</span>
+              </p>
+            </div>
+
+            <input
+              class="game__input"
+              type="text"
+              id="_input"
+              placeholder="Введите ваше слово..."
+            />
+          </div>
+
+          <div
+            class="game__container game__container_inactive"
+            id="_gameContainer3"
+          >
+            <button class="game__button" id="_resetBtn">начать заново</button>
+            <button class="game__button" id="_hideBtn">скрыть ответы</button>
+          </div>
+
+          <div class="answers answers_inactive" id="_gameContainerAnswers">
+            <div class="answers__box" id="_user1Answer">
+              <b> Ответы игрока 1</b>
+            </div>
+            <div class="answers__box" id="_user2Answer">
+              <b> Ответы игрока 2</b>
+            </div>
           </div>
         </div>
       </div>
